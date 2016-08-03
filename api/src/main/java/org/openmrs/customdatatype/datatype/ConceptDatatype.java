@@ -22,31 +22,28 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class ConceptDatatype extends BaseOpenmrsDatatype<Concept> {
-
-    /**
-     * @see
-     * org.openmrs.customdatatype.SerializingCustomDatatype#deserialize(String)
-     * @override
-     */
-    public Concept deserialize(String uuid) {
-        if (StringUtils.isBlank(uuid)) {
-            return null;
-        }
-        return Context.getConceptService().getConceptByUuid(uuid);
-    }
-
-    /**
-     * @see BaseOpenmrsDatatype#doGetTextSummary(Object)
-     * @should use the name in summary instance
-     */
-    @Override
-    public Summary doGetTextSummary(Concept concept) {
-        String name = "";
-        if (concept != null) {
-            if (concept.getName() != null) {
-                name = concept.getName().getName();
-            }
-        }
-        return new CustomDatatype.Summary(name, true);
-    }
+	
+	/**
+	 * @see org.openmrs.customdatatype.SerializingCustomDatatype#deserialize(String)
+	 * @override
+	 */
+	public Concept deserialize(String uuid) {
+		if (StringUtils.isBlank(uuid)) {
+			return null;
+		}
+		return Context.getConceptService().getConceptByUuid(uuid);
+	}
+	
+	/**
+	 * @see BaseOpenmrsDatatype#doGetTextSummary(Object)
+	 * @should use the name in summary instance
+	 */
+	@Override
+	public Summary doGetTextSummary(Concept concept) {
+		String name = "";
+		if (concept.getName() != null) {
+			name = concept.getName().getName();
+		}
+		return new CustomDatatype.Summary(name, true);
+	}
 }
