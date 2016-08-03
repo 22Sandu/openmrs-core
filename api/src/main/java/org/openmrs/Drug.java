@@ -37,9 +37,15 @@ public class Drug extends BaseOpenmrsMetadata {
 	
 	private Concept dosageForm;
 	
+	private Double doseStrength;
+	
 	private Double maximumDailyDose;
 	
 	private Double minimumDailyDose;
+	
+	private Concept route;
+	
+	private String units;
 	
 	private String strength;
 	
