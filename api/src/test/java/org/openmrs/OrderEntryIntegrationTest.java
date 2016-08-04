@@ -308,7 +308,7 @@ public class OrderEntryIntegrationTest extends BaseContextSensitiveTest {
 	 * @throws Exception
 	 */
 	@Test
-	public void shouldNotReturnAProxyForPreviousOrder() throws Exception {
+	public void shouldNotReturnAProxyForPreviousOrder() throws APIException {
 		Order dcOrder = orderService.getOrder(22);
 		Order previousOrder = dcOrder.getPreviousOrder();
 		assertNotNull(previousOrder);
@@ -350,7 +350,7 @@ public class OrderEntryIntegrationTest extends BaseContextSensitiveTest {
 	}
 	
 	@Test
-	public void shouldAllowRetrospectiveDataEntryOfOrders() throws Exception {
+	public void shouldAllowRetrospectiveDataEntryOfOrders() throws APIException {
 		Order order = new TestOrder();
 		order.setPatient(patientService.getPatient(2));
 		order.setCareSetting(orderService.getCareSetting(2));
